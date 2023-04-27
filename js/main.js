@@ -1,6 +1,8 @@
 // INIT
 const gridContainer = document.getElementById("grid");
 const playBtn = document.getElementById("play-btn");
+main = document.querySelector("main");
+result = document.getElementById("result");
 let bombs = [];
 let points = 0;
 
@@ -68,8 +70,5 @@ function endGame() {
     for (let i = 0; i < squares.length; i++) {
         squares[i].removeEventListener("click", clickSquare);
     }
-    msg = document.createElement("p");
-    msg.innerText = `Game over. Punti totalizzati: ${points}`;
-    main = document.querySelector("main");
-    main.appendChild(msg);
+    result.innerText = (`Game over. Punti totalizzati: ${points}`);
 }
