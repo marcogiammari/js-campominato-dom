@@ -1,0 +1,67 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: rgb(0, 175, 175);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: white;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 4rem;
+    background-color: teal;
+    padding: 1.5rem;
+}
+
+button,
+select {
+    padding: .25rem;
+}
+
+main {
+    display: grid;
+    place-items: center;
+}
+
+#grid {
+    border: 1px solid black;
+    margin: 2rem 0;
+    display: none;
+    height: calc(100vh - 11rem);
+    aspect-ratio: 1/1;
+}
+
+.square {
+    display: grid;
+    place-items: center;
+    border: 1px solid black;
+}
+
+.clicked {
+    background-color: rgb(4, 0, 255);
+}
+
+.exploded {
+    background-color: red !important;
+}
+
+footer {
+    background-color: teal;
+    height: 3rem;
+    display: flex;
+    place-items: center;
+    padding: 1.5rem;
+}
