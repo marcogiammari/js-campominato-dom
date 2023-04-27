@@ -2,6 +2,7 @@
 const gridContainer = document.getElementById("grid");
 const playBtn = document.getElementById("play-btn");
 let bombs = [];
+let points = 0;
 
 // associo la funzione al bottone
 playBtn.addEventListener("click", function () {
@@ -38,8 +39,13 @@ function startGame(difficulty) {
         let el = document.createElement("div");
         el.classList.add("square");
         el.innerText = i;
-        el.addEventListener("click", function () {
-            console.log(bombs)
+        el.addEventListener("click", clickSquare) 
+        gridContainer.appendChild(el);
+    }
+}
+        
+function clickSquare() {
+            console.log(bombs);
             hasBomb = false;
             for (let j = 0; j < bombs.length; j++) {
                 const bomb = bombs[j];
@@ -49,10 +55,21 @@ function startGame(difficulty) {
             }
             if (hasBomb) {
                 this.classList.add("exploded");
+                endGame();
             } else {
                 this.classList.toggle("clicked");
+                points += 1;
             }
-        })
-        gridContainer.appendChild(el);
+        }
+        
+
+function endGame() {
+    squares = document.querySelectorAll(".square");
+    for (let i = 0; i < squares.length; i++) {
+        squares[i].removeEventListener("click", clickSquare);
     }
+    msg = document.createElement("p");
+    msg.innerText = `Game over. Punti totalizzati: ${points}`;
+    main = document.querySelector("main");
+    main.appendChild(msg);
 }
