@@ -59,16 +59,29 @@ function clickSquare() {
                 this.classList.add("exploded");
                 endGame();
             } else {
-                this.classList.toggle("clicked");
+                this.classList.add("clicked");
                 points += 1;
             }
+            this.removeEventListener("click", clickSquare);
         }
         
 
 function endGame() {
     squares = document.querySelectorAll(".square");
-    for (let i = 0; i < squares.length; i++) {
+    for (let i = 0; i < squares.length; i++) {        
         squares[i].removeEventListener("click", clickSquare);
+    }
+    control = false;
+    for (let i = 0; i < squares.length; i++) {
+        for (let j = 0; j < bombs.length; j++) {
+            if (squares[i].innerHTML == bombs[j]) {
+                console.log(squares[i], bombs[j])
+                squares[i].style.backgroundColor = "red"
+            }
+        }
+    }
+    if (control) {
+        console.log("prova")
     }
     result.innerText = (`Game over. Punti totalizzati: ${points}`);
 }
